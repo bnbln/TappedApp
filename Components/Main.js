@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text,SafeAreaView, View, Button, ScrollView, TouchableOpacity, StatusBar, Animated,
-  Image, Easing } from 'react-native';
+  Image, Easing, FlatList } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import * as firebase from 'firebase';
 
 import Nav from './Nav';
+import Featured from './Featured';
 import Question from './Question';
 //import database from '../Connection/Firebase.js';
 
@@ -26,23 +27,15 @@ componentDidMount (){
   });
 }
   render() {
-  console.log(this.state.questions);
-  console.log(this.state.content);
     return (
       <SafeAreaView style={styles.safeArea}>
       <StatusBar
                 barStyle='light-content'
             />
-        <ScrollView style={{backgroundColor: '#FFC80F',}}>
-          <Text>{this.state.question}</Text>
-          {this.state.questions.map((question, i) =>
-            <Question
-              key={i}
-              q={question.Question}
-              p={question.Description}
-              action={(i) => Actions.quiz()}
-              ></Question>
-          )}
+          <ScrollView style={{backgroundColor: '#FFC971',}} horizontal={false} >
+            <Featured category="Featured" all="false" data={this.state.questions}></Featured>
+            <Featured category="All" all="true" data={this.state.questions}></Featured>
+
         </ScrollView>
       </SafeAreaView>
     );

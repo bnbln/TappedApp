@@ -8,7 +8,7 @@ class Nav extends React.Component {
     return (
       <View style={{
           flexDirection: 'row',
-          backgroundColor: '#FFC80F',
+          backgroundColor: '#FFC971',
           height:60,
           shadowColor: "black",
           shadowOffset:{width: 0,height: -200},

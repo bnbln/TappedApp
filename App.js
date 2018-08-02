@@ -37,7 +37,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   navBar: {
-    backgroundColor: '#FFC80F', // changing navbar color
+    backgroundColor: '#FFC971', // changing navbar color
     height:60
   },
   navTitle: {
