@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import png from '../Assets/google-trends.png';
+
 
 
 
@@ -12,11 +14,14 @@ class Featured extends React.Component {
     return (
       <View style={{flex: 1}}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{flex: 2, flexDirection: 'row'}}>
-          <View style={{flex:1, marginBottom:10}}>
           {this.props.all === "false" ?
-            <Text style={{position:"absolute"}}>{this.props.category}</Text> : null
+          <TouchableOpacity style={styles.TouchBoxCategory}>
+            <Image source={png} style={{width:45,height:45}}/>
+            <Text adjustsFontSizeToFit allowFontScaling numberOfLines={1} style={{color:"#fff", marginTop:10}}>{this.props.category}</Text>
+
+          </TouchableOpacity> : null
           }
-          </View>
+
         {this.props.data.map((data, i) =>
             {return this.props.all === "false" ?
 
@@ -52,7 +57,7 @@ class Featured extends React.Component {
 const styles = StyleSheet.create({
   TouchBox: {
     minHeight: 250,
-    marginTop: 30,
+    marginTop: 15,
     marginBottom: 0,
     marginRight: 15,
     width: Dimensions.get('window').width - 95,
@@ -64,7 +69,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     shadowColor: "black",
     shadowOpacity:0.1,
-    shadowRadius:40
+    shadowRadius:40,
   },
   QuestionInBox: {
     fontSize: 30,
@@ -73,6 +78,25 @@ const styles = StyleSheet.create({
   },
   DescriptionInBox: {
     marginTop: 15
-  }
+  },
+  TouchBoxCategory:{
+    minHeight: 250,
+    marginTop: 15,
+    marginBottom: 0,
+    marginRight: -200,
+    width: 200+65,
+    left: -200,
+    padding: 5,
+    paddingLeft: 205,
+    backgroundColor: '#3F3C38',
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+    position: "relative",
+    alignItems: 'center',
+    justifyContent: "center",
+    shadowColor: "black",
+    shadowOpacity:0.1,
+    shadowRadius:40,
+    }
 });
 export default Featured;

@@ -6,9 +6,6 @@ import * as firebase from 'firebase';
 
 import Nav from './Nav';
 import Featured from './Featured';
-import Question from './Question';
-//import database from '../Connection/Firebase.js';
-
 export default class App extends React.Component {
   constructor () {
   super()
@@ -32,10 +29,10 @@ componentDidMount (){
       <StatusBar
                 barStyle='light-content'
             />
-          <ScrollView style={{backgroundColor: '#FFC971',}} horizontal={false} >
+          <ScrollView style={{backgroundColor: '#FFC971'}} horizontal={false} >
             <Featured category="Featured" all="false" data={this.state.questions}></Featured>
             <Featured category="All" all="true" data={this.state.questions}></Featured>
-
+            <Featured category="Pop-Kultur" all="false" data={this.state.questions}></Featured>
         </ScrollView>
       </SafeAreaView>
     );

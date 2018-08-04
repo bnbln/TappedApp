@@ -6,7 +6,6 @@ import { StyleSheet, Text,SafeAreaView, View, Button, ScrollView, TouchableOpaci
   import Main from './Components/Main'
   import Quiz from './Components/Quiz'
 import Nav from './Components/Nav';
-import Question from './Components/Question';
 
 var config = {
   apiKey: "AIzaSyCHEEhEClVj7VrZ5PTcgKgNoMcGZBrscew",
