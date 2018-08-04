@@ -29,14 +29,12 @@ scrollNext = (value) => {
   this.scroller.scrollTo({x: scrollXPos, y: 0});
   this.setState({
     values: this.state.value+this.state.values,
+    value: 0,
     objCount: this.state.objCount+1
 
     })
 }
-giveResult = () => {
 
-
-}
   render() {
     var result = null;
     var index= this.state.index;
@@ -58,6 +56,12 @@ giveResult = () => {
       }
     }
 
+    {if (this.state.value === 0) {
+       var dis = true;
+    } else {
+      var dis = false;
+    }}
+
     return (
       <ImageBackground source={bg} blurRadius={30} style={{flex:1, position:"absolute",left:0, top:0, right:0, bottom:0, paddingRight:8,paddingLeft: 8,
       paddingTop:10, margin:0}}>
@@ -75,11 +79,11 @@ giveResult = () => {
               this.props.data.Quiz.map((questiondata, i) =>
               <View style={styles.bgBoxQuestion} key={i}>
                 <Text style={{fontWeight: 'bold', fontSize:24, marginBottom:15}}>{questiondata.Frage}</Text>
-                <View style={{height:1, width:"100%", borderRadius:20, backgroundColor:"rgba(0,0,0,0.6)", marginBottom:30}}/>
+                <View style={{height:1, width:"100%", borderRadius:20, backgroundColor:"rgba(0,0,0,0.6)", marginBottom:30, paddingRight:80}}/>
                   <RadioForm
                     style={{
                       alignItems: "flex-start",
-                      marginLeft: 30,
+                      marginLeft: 0,
                       marginBottom:80
                     }}
                     radio_props={[
@@ -87,15 +91,14 @@ giveResult = () => {
                       {label: questiondata.A2, value: 2 },
                       {label: questiondata.A3, value: 3 }
                     ]}
-                    initial={0}
+                    initial={null}
                     onPress={(value) => {this.setState({
                       value
                     })}}
                   />
-                  <Text>{this.state.value}</Text>
-                  <Text>{this.state.values}</Text>
 
-                    <TouchableOpacity style={styles.myButton}
+
+                    <TouchableOpacity style={styles.myButton} disabled={dis}
                       onPress={(value) => {this.scrollNext(value)}}>
                       <Text style={{ color:'#fff', fontSize:17, paddingTop:10,paddingBottom:10, fontWeight:'bold'}}>Weiter</Text>
                     </TouchableOpacity>
@@ -135,6 +138,7 @@ bgBox:{
 },
 bgBoxQuestion:{
   borderRadius:5, backgroundColor:"rgba(255,255,255,0.8)", padding:15,
+  paddingRight:50,
   marginTop:15,
   width:Dimensions.get('window').width - 16,
   marginRight:8
