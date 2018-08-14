@@ -1,5 +1,10 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+    "sdkVersion": "27.0.0",
+    "icon": "./Assets/icon.png",
+    "splash":{
+       "image": "./Assets/splash.png",
+       "resizeMode": "cover"
+    }
   }
 }
