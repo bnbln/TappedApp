@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text,SafeAreaView, View, Button, ScrollView, TouchableOpacity, StatusBar, Animated,
+import { StyleSheet, Text,SafeAreaView, View, Button, ScrollView, TouchableOpacity, StatusBar, Animated, ImageBackground,
   Image, Easing, FlatList } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import * as firebase from 'firebase';
@@ -7,8 +7,9 @@ import {styleguide} from "./x_styleguide";
 
 import Nav from './Nav';
 import Homescreen from './Homescreen';
-
 import Featured from './Featured';
+import bg from '../Assets/bg.png';
+
 export default class Main extends React.Component {
   constructor (props) {
   super(props)
@@ -31,7 +32,7 @@ export default class Main extends React.Component {
 static navigationOptions = {
     title: 'Tapped',
     headerStyle: {
-      backgroundColor: "#CD405B",
+      backgroundColor: "transparent",
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -66,14 +67,17 @@ componentDidMount (){
   render() {
     console.log("Main Props",this.props);
     return (
+      <ImageBackground light source={bg} blurRadius={30} style={{flex:1, position:"absolute",left:0, top:0, right:0, bottom:0,
+         margin:0, backgroundColor: this.state.styleguide ? this.state.styleguide.red : "white"}}>
+
       <SafeAreaView style={{
         flex: 1,
-        backgroundColor: styleguide.red
+
       }}>
       <StatusBar
                 barStyle='light-content'
             />
-          <ScrollView style={{backgroundColor: styleguide.red}} horizontal={false} >
+          <ScrollView horizontal={false} >
             <Homescreen {...this.props}
               navigation={this.props.navigation}
               questions={this.state.questions}
@@ -100,6 +104,7 @@ componentDidMount (){
               thisLayout="2" />
         </ScrollView>
       </SafeAreaView>
+      </ImageBackground>
     );
   }
 }

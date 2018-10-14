@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text,SafeAreaView, View, Button, ScrollView, TouchableOpacity, StatusBar, Animated,
   Image, Easing } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
+import config from './config';
 import * as firebase from 'firebase';
 import {
   createStackNavigator,
@@ -10,14 +11,6 @@ import Main from './Components/Main'
 import Quiz from './Components/Quiz'
 import Nav from './Components/Nav';
 import {styleguide} from "./Components/x_styleguide";
-var config = {
-  apiKey: "AIzaSyCHEEhEClVj7VrZ5PTcgKgNoMcGZBrscew",
-  authDomain: "tapped-app-67f43.firebaseapp.com",
-  databaseURL: "https://tapped-app-67f43.firebaseio.com",
-  projectId: "tapped-app-67f43",
-  storageBucket: "tapped-app-67f43.appspot.com",
-  messagingSenderId: "737804765018"
-};
 firebase.initializeApp(config);
 
 class App extends React.Component {
